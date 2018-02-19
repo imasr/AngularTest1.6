@@ -10,42 +10,56 @@
  */
 angular
   .module("angular1App", [
+    "ui.router",
     "ngAnimate",
     "ngCookies",
     "ngResource",
-    "ngRoute",
     "ngSanitize",
     "ngTouch"
   ])
-  .config(function($routeProvider) {
-    $routeProvider
-      .when("/", {
+  .config(function($stateProvider, $urlRouterProvider) {
+    $urlRouterProvider.otherwise("category");
+    $stateProvider
+      .state("main", {
+        url: "/main",
         templateUrl: "views/main.html",
         controller: "MainCtrl",
-        controllerAs: "main"
       })
-      .when("/about", {
-        templateUrl: "views/about.html",
-        controller: "AboutCtrl",
-        controllerAs: "about"
-      })
-      .otherwise({
-        redirectTo: "/",
+      .state("category", {
+        url: "/category",
+        templateUrl: "views/category.html",
+        controller: "CategoryCtrl",
       });
   })
-  .controller("NavCtrl", function(apiCommunity, $scope, $http) {
+  .controller("NavCtrl", function(
+    apiCommunity,
+    $scope,
+    $http,
+    $rootScope,
+    $state
+  ) {
     $scope.location = [];
-    $scope.location = function() {
+    $scope.location = () => {
       apiCommunity.then(
         response => {
-          console.log(response.data);
           $scope.location = response.data.data.locations;
-          console.log($scope.location);
         },
         error => {
           console.log(error);
         }
       );
+    };
+
+    $scope.selectLocation = location => {
+      $state.go("category");
+      var data = { data: location };
+      $rootScope.$broadcast("categoryData", data);
+
+    };
+    $scope.selectBranch = (location, branch) => {
+      $state.go("category");
+      var data = { data: location, branch: branch };
+      $rootScope.$broadcast("categoryData", data);
     };
 
     $scope.location();
