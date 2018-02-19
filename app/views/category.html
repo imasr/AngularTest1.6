@@ -1,0 +1,12 @@
+<div ng-if="!categories.length"class="home">
+  <p>WELCOME TO
+    <br>RETAIL MANAGEMENT SYSTEM</p>
+  <P>Please select Location</P>
+</div>
+
+<div>
+  <div ng-if="categories.length" ng-repeat="data in categories" class="width">
+    <img ng-src="images/category/{{data.image}}" alt="">{{data.name}}
+  </div>
+</div>
+
