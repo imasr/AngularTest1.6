@@ -1,12 +1,17 @@
-<div ng-if="!categories.length"class="home">
-  <p>WELCOME TO
-    <br>RETAIL MANAGEMENT SYSTEM</p>
-  <P>Please select Location</P>
-</div>
+<div class="col-md-12 top">
+  <div ng-if="!categories.length"class="home">
+    <p>WELCOME TO
+      <br>RETAIL MANAGEMENT SYSTEM</p>
+    <P>Please select Location</P>
+  </div>
 
-<div>
-  <div ng-if="categories.length" ng-repeat="data in categories" class="width">
-    <img ng-src="images/category/{{data.image}}" alt="">{{data.name}}
+  <div ng-if="categories.length" ng-repeat="data in categories" class="col-md-3 col-sm-3 col-xs-6 width" ng-click="subcategory(data)">
+    <div class="col-md-12 col-sm-12 pad0">
+      <img ng-src="images/category/{{data.image}}" alt="">
+    </div>
+    <div class="col-md-12 col-sm-12 pad0 height50">
+      <p class="abs">{{data.name}}</p>
+    </div>
   </div>
 </div>
 

@@ -24,5 +24,10 @@ angular.module('angular1App')
       }
       console.log($scope.categories);
     });
+    $scope.subcategory=(data)=>{
+      if (data.subcategories){
+        $scope.categories = data.subcategories;
+      }
+    }
     $scope.location();
   });
