@@ -114,12 +114,13 @@ body {
   }
 }
 .top{
-  margin-top: 50px;
-  margin-bottom: 50px;
+  margin-top: 100px;
+  margin-bottom: 100px;
   /* min-height: 473px; */
 }
 .header {
   border-bottom: 1px solid #e5e5e5;
+  z-index: 1;
   position: fixed;
   width: 100%;
 }
@@ -176,7 +177,10 @@ body {
     padding-bottom: 20%;
 }
 .width{
-  width: 24%;
+  width: 23%;
+  margin: 10px;
+  padding: 0px;
+  cursor: pointer;
   display: inline-block;
   -webkit-box-shadow: 0px 0px 4px 1px rgba(0, 8, 255, 0.21);
   -moz-box-shadow: 0px 0px 4px 1px rgba(0, 8, 255, 0.21);
