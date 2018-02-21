@@ -58,7 +58,7 @@ angular
     };
     $scope.selectBranch = (location, branch) => {
       $state.go("category");
-      var data = { data: location, branch: branch };
+      var data = { 'data': location, 'branch': branch };
       $rootScope.$broadcast("categoryData", data);
     };
 
